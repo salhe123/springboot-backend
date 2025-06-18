@@ -1,2 +1,2 @@
 com\example\AppTest.class
-com\example\myspringapp\service\EmployeeServiceTest.class
+com\example\service\EmployeeServiceTest.class

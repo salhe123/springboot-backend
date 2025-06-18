@@ -1,7 +1,7 @@
-com\example\myspringapp\repository\EmployeeRepository.class
-com\example\myspringapp\controller\EmployeeController.class
-com\example\myspringapp\service\EmployeeService.class
-com\example\myspringapp\dto\EmployeeRequest.class
-com\example\myspringapp\dto\EmployeeResponse.class
-com\example\App.class
-com\example\myspringapp\model\Employee.class
+com\example\dto\EmployeeResponse.class
+com\example\service\EmployeeService.class
+com\example\model\Employee.class
+com\example\dto\EmployeeRequest.class
+com\example\EmployeeServiceApplication.class
+com\example\repository\EmployeeRepository.class
+com\example\controller\EmployeeController.class
