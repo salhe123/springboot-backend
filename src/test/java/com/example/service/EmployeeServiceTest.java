@@ -32,39 +32,34 @@ class EmployeeServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Test
-    void testCreateEmployee() {
-        EmployeeRequest request = new EmployeeRequest();
-        request.setFirstName("Mohamed");
-        request.setLastName("Ahmed");
-        request.setDateOfBirth(LocalDate.of(2000, 1, 1));
-        request.setSalary(1000.0);
-        request.setJoinDate(LocalDate.of(2023, 5, 18));
-        request.setDepartment("IT");
+   @Test
+void testCreateEmployee() {
+    EmployeeRequest request = new EmployeeRequest();
+    request.setFirstName("Mohamed");
+    request.setLastName("Ahmed");
+    request.setDateOfBirth(LocalDate.of(2000, 1, 1));
+    request.setSalary(1000.0);
+    request.setJoinDate(LocalDate.of(2023, 5, 18));
+    request.setDepartment("IT");
 
-        Employee employee = new Employee();
-        employee.setId(1L);
-        employee.setFirstName("Mohamed");
-        employee.setLastName("Ahmed");
-        employee.setDateOfBirth(LocalDate.of(2000, 1, 1));
-        employee.setSalary(1000.0);
-        employee.setJoinDate(LocalDate.of(2023, 5, 18));
-        employee.setDepartment("IT");
+    Employee employee = new Employee();
+    employee.setId(1L);
+    employee.setFirstName("Mohamed");
+    employee.setLastName("Ahmed");
+    employee.setDateOfBirth(LocalDate.of(2000, 1, 1));
+    employee.setSalary(1000.0);
+    employee.setJoinDate(LocalDate.of(2023, 5, 18));
+    employee.setDepartment("IT");
 
-        when(employeeRepository.save(any(Employee.class))).thenReturn(employee);
+    when(employeeRepository.save(any(Employee.class))).thenReturn(employee);
 
-        EmployeeResponse response = employeeService.createEmployee(request);
+    // Change here: expect a Long, not EmployeeResponse
+    Long id = employeeService.createEmployee(request);
 
-        assertNotNull(response);
-        assertEquals(1L, response.getId());
-        assertEquals("Mohamed", response.getFirstName());
-        assertEquals("Ahmed", response.getLastName());
-        assertEquals(LocalDate.of(2000, 1, 1), response.getDateOfBirth());
-        assertEquals(1000.0, response.getSalary());
-        assertEquals(LocalDate.of(2023, 5, 18), response.getJoinDate());
-        assertEquals("IT", response.getDepartment());
-        verify(employeeRepository, times(1)).save(any(Employee.class));
-    }
+    assertNotNull(id);
+    assertEquals(1L, id);
+    verify(employeeRepository, times(1)).save(any(Employee.class));
+}
 
     @Test
     void testGetEmployeeById() {

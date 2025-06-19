@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/employees")
@@ -19,10 +21,12 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<EmployeeResponse> createEmployee(@RequestBody EmployeeRequest request) {
-        EmployeeResponse response = employeeService.createEmployee(request);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
+public ResponseEntity<Map<String, Long>> createEmployee(@RequestBody EmployeeRequest request) {
+    Long id = employeeService.createEmployee(request);
+    Map<String, Long> responseBody = new HashMap<>();
+    responseBody.put("id", id);
+    return new ResponseEntity<>(responseBody, HttpStatus.CREATED);
+}
 
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeResponse> getEmployeeById(@PathVariable Long id) {

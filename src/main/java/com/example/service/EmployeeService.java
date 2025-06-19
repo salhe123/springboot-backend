@@ -18,7 +18,8 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public EmployeeResponse createEmployee(EmployeeRequest request) {
+    // Changed return type to Long
+    public Long createEmployee(EmployeeRequest request) {
         Employee employee = new Employee();
         employee.setFirstName(request.getFirstName());
         employee.setLastName(request.getLastName());
@@ -27,7 +28,7 @@ public class EmployeeService {
         employee.setJoinDate(request.getJoinDate());
         employee.setDepartment(request.getDepartment());
         Employee savedEmployee = employeeRepository.save(employee);
-        return mapToResponse(savedEmployee);
+        return savedEmployee.getId();
     }
 
     public EmployeeResponse getEmployeeById(Long id) {
