@@ -53,4 +53,30 @@ public class EmployeeService {
         response.setDepartment(employee.getDepartment());
         return response;
     }
+
+    public EmployeeResponse updateEmployee(Long id, EmployeeRequest request) {
+        Employee employee = employeeRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
+        employee.setFirstName(request.getFirstName());
+        employee.setLastName(request.getLastName());
+        employee.setDateOfBirth(request.getDateOfBirth());
+        employee.setSalary(request.getSalary());
+        employee.setJoinDate(request.getJoinDate());
+        employee.setDepartment(request.getDepartment());
+        Employee updated = employeeRepository.save(employee);
+        return mapToResponse(updated);
+    }
+    public List<EmployeeResponse> getAllEmployees() {
+    List<Employee> employees = employeeRepository.findAll();
+    return employees.stream()
+            .map(this::mapToResponse)
+            .collect(Collectors.toList());
+}
+
+    public void deleteEmployee(Long id) {
+        if (!employeeRepository.existsById(id)) {
+            throw new RuntimeException("Employee not found with id: " + id);
+        }
+        employeeRepository.deleteById(id);
+    }
 }

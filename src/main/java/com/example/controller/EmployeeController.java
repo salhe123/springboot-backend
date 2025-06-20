@@ -6,6 +6,7 @@ import com.example.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,12 +22,19 @@ public class EmployeeController {
     }
 
     @PostMapping
-public ResponseEntity<Map<String, Long>> createEmployee(@RequestBody EmployeeRequest request) {
-    Long id = employeeService.createEmployee(request);
-    Map<String, Long> responseBody = new HashMap<>();
-    responseBody.put("id", id);
-    return new ResponseEntity<>(responseBody, HttpStatus.CREATED);
-}
+    public ResponseEntity<Map<String, Long>> createEmployee(@RequestBody EmployeeRequest request) {
+        Long id = employeeService.createEmployee(request);
+        Map<String, Long> responseBody = new HashMap<>();
+        responseBody.put("id", id);
+        return new ResponseEntity<>(responseBody, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<EmployeeResponse>> getAllEmployees() {
+        List<EmployeeResponse> employees = employeeService.getAllEmployees();
+        return ResponseEntity.ok(employees);
+    }
+    
 
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeResponse> getEmployeeById(@PathVariable Long id) {
@@ -42,4 +50,26 @@ public ResponseEntity<Map<String, Long>> createEmployee(@RequestBody EmployeeReq
         List<EmployeeResponse> employees = employeeService.getEmployees(name, fromSalary, toSalary);
         return ResponseEntity.ok(employees);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EmployeeResponse> updateEmployee(
+            @PathVariable Long id, @RequestBody EmployeeRequest request) {
+        try {
+            EmployeeResponse updated = employeeService.updateEmployee(id, request);
+            return ResponseEntity.ok(updated);
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
+        try {
+            employeeService.deleteEmployee(id);
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
+
 }
