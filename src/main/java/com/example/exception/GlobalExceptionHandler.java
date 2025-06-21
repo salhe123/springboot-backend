@@ -15,14 +15,16 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Object> handleRuntimeException(RuntimeException ex, WebRequest request) {
         Map<String, Object> response = new LinkedHashMap<>();
-        response.put("timestamp", LocalDateTime.now());
+        response.put("details", "Oops! " + ex.getMessage() + " Please try a different value.");
+        response.put("message", ex.getMessage());
+
         response.put("status", HttpStatus.BAD_REQUEST.value());
         response.put("error", "Bad Request");
-        response.put("message", ex.getMessage());
         response.put("path", request.getDescription(false).replace("uri=", ""));
+        response.put("timestamp", LocalDateTime.now());
+
 
         // Human-readable message as a new field
-        response.put("details", "Oops! " + ex.getMessage() + " Please try a different value.");
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }

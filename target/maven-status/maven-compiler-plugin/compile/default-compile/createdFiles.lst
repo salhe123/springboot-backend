@@ -1,7 +1,17 @@
+com\example\controller\AuthController.class
 com\example\service\EmployeeService.class
 com\example\model\Employee.class
 com\example\dto\EmployeeRequest.class
 com\example\repository\EmployeeRepository.class
+com\example\service\AuthService.class
+com\example\exception\GlobalExceptionHandler.class
+com\example\security\SecurityConfig.class
 com\example\controller\EmployeeController.class
+com\example\dto\LoginRequest.class
 com\example\dto\EmployeeResponse.class
+com\example\repository\UserRepository.class
+com\example\security\JwtUtil.class
+com\example\dto\AuthResponse.class
+com\example\dto\RegisterRequest.class
 com\example\EmployeeServiceApplication.class
+com\example\model\User.class
