@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.AppTest" time="17.19" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.service.EmployeeServiceIntegrationTest" time="42.061" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -47,7 +47,7 @@
     <property name="localRepository" value="C:\Users\tefa\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\tefa\AppData\Local\Temp\"/>
-    <property name="com.zaxxer.hikari.pool_number" value="1"/>
+    <property name="com.zaxxer.hikari.pool_number" value="2"/>
     <property name="java.version" value="23"/>
     <property name="user.dir" value="E:\seya\seya projects\java\my-spring-app"/>
     <property name="os.arch" value="amd64"/>
@@ -65,10 +65,30 @@
     <property name="java.class.version" value="67.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[my-spring-app] "/>
   </properties>
-  <testcase name="contextLoads" classname="com.example.AppTest" time="1.306">
-    <system-out><![CDATA[10:39:36.757 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.AppTest]: AppTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-10:39:36.999 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.EmployeeServiceApplication for test class com.example.AppTest
-10:39:37.426 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+  <testcase name="testDeleteEmployee" classname="com.example.service.EmployeeServiceIntegrationTest" time="0.828">
+    <system-out><![CDATA[2025-06-23T10:39:53.750+03:00  INFO 14480 --- [my-spring-app] [           main] org.testcontainers.images.PullPolicy     : Image pull policy will be performed by: DefaultPullPolicy()
+2025-06-23T10:39:53.754+03:00  INFO 14480 --- [my-spring-app] [           main] o.t.utility.ImageNameSubstitutor         : Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-06-23T10:39:54.173+03:00  INFO 14480 --- [my-spring-app] [           main] o.t.d.DockerClientProviderStrategy       : Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-06-23T10:39:55.320+03:00  INFO 14480 --- [my-spring-app] [           main] o.t.d.DockerClientProviderStrategy       : Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-06-23T10:39:55.323+03:00  INFO 14480 --- [my-spring-app] [           main] org.testcontainers.DockerClientFactory   : Docker host IP address is localhost
+2025-06-23T10:39:55.383+03:00  INFO 14480 --- [my-spring-app] [           main] org.testcontainers.DockerClientFactory   : Connected to docker: 
+  Server Version: 28.2.2
+  API Version: 1.50
+  Operating System: Docker Desktop
+  Total Memory: 3863 MB
+2025-06-23T10:39:55.474+03:00  INFO 14480 --- [my-spring-app] [           main] tc.testcontainers/ryuk:0.6.0             : Creating container for image: testcontainers/ryuk:0.6.0
+2025-06-23T10:39:57.510+03:00  INFO 14480 --- [my-spring-app] [           main] tc.testcontainers/ryuk:0.6.0             : Container testcontainers/ryuk:0.6.0 is starting: 0d4844f6c547cabe8705d02bb5d753f3be955cd9de73b6b698373a2d75f87e26
+2025-06-23T10:40:00.308+03:00  INFO 14480 --- [my-spring-app] [           main] tc.testcontainers/ryuk:0.6.0             : Container testcontainers/ryuk:0.6.0 started in PT4.8334059S
+2025-06-23T10:40:00.332+03:00  INFO 14480 --- [my-spring-app] [           main] o.t.utility.RyukResourceReaper           : Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-06-23T10:40:00.333+03:00  INFO 14480 --- [my-spring-app] [           main] org.testcontainers.DockerClientFactory   : Checking the system...
+2025-06-23T10:40:00.334+03:00  INFO 14480 --- [my-spring-app] [           main] org.testcontainers.DockerClientFactory   : ✔︎ Docker server version should be at least 1.6.0
+2025-06-23T10:40:00.335+03:00  INFO 14480 --- [my-spring-app] [           main] tc.postgres:17                           : Creating container for image: postgres:17
+2025-06-23T10:40:02.143+03:00  INFO 14480 --- [my-spring-app] [           main] tc.postgres:17                           : Container postgres:17 is starting: 1c1d78d17b881ceaef94925dc80480f233e665ffd69d942360bc57d7d383011a
+2025-06-23T10:40:26.434+03:00  INFO 14480 --- [my-spring-app] [           main] tc.postgres:17                           : Container postgres:17 started in PT26.0990613S
+2025-06-23T10:40:26.436+03:00  INFO 14480 --- [my-spring-app] [           main] tc.postgres:17                           : Container is started (JDBC URL: jdbc:postgresql://localhost:51309/employee_db?loggerLevel=OFF)
+2025-06-23T10:40:26.448+03:00  INFO 14480 --- [my-spring-app] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.service.EmployeeServiceIntegrationTest]: EmployeeServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-06-23T10:40:26.515+03:00  INFO 14480 --- [my-spring-app] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.EmployeeServiceApplication for test class com.example.service.EmployeeServiceIntegrationTest
+2025-06-23T10:40:26.547+03:00  INFO 14480 --- [my-spring-app] [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -78,35 +98,81 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.5)
 
-2025-06-23T10:39:38.242+03:00  INFO 14480 --- [my-spring-app] [           main] com.example.AppTest                      : Starting AppTest using Java 23 with PID 14480 (started by tefa in E:\seya\seya projects\java\my-spring-app)
-2025-06-23T10:39:38.245+03:00  INFO 14480 --- [my-spring-app] [           main] com.example.AppTest                      : No active profile set, falling back to 1 default profile: "default"
-2025-06-23T10:39:40.572+03:00  INFO 14480 --- [my-spring-app] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-06-23T10:39:40.786+03:00  INFO 14480 --- [my-spring-app] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 191 ms. Found 2 JPA repository interfaces.
-2025-06-23T10:39:42.088+03:00  INFO 14480 --- [my-spring-app] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-06-23T10:39:42.708+03:00  INFO 14480 --- [my-spring-app] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@160e99e0
-2025-06-23T10:39:42.712+03:00  INFO 14480 --- [my-spring-app] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-06-23T10:39:43.154+03:00  INFO 14480 --- [my-spring-app] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-06-23T10:39:43.386+03:00  INFO 14480 --- [my-spring-app] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2025-06-23T10:39:43.560+03:00  INFO 14480 --- [my-spring-app] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-06-23T10:39:44.555+03:00  INFO 14480 --- [my-spring-app] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-06-23T10:39:44.836+03:00  WARN 14480 --- [my-spring-app] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-06-23T10:39:46.892+03:00  INFO 14480 --- [my-spring-app] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-06-23T10:39:46.977+03:00  INFO 14480 --- [my-spring-app] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-06-23T10:39:48.028+03:00  INFO 14480 --- [my-spring-app] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-06-23T10:39:49.931+03:00  WARN 14480 --- [my-spring-app] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-06-23T10:39:50.013+03:00  WARN 14480 --- [my-spring-app] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+2025-06-23T10:40:26.893+03:00  INFO 14480 --- [my-spring-app] [           main] c.e.s.EmployeeServiceIntegrationTest     : Starting EmployeeServiceIntegrationTest using Java 23 with PID 14480 (started by tefa in E:\seya\seya projects\java\my-spring-app)
+2025-06-23T10:40:26.896+03:00  INFO 14480 --- [my-spring-app] [           main] c.e.s.EmployeeServiceIntegrationTest     : No active profile set, falling back to 1 default profile: "default"
+2025-06-23T10:40:28.364+03:00  INFO 14480 --- [my-spring-app] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-23T10:40:28.390+03:00  INFO 14480 --- [my-spring-app] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 2 JPA repository interfaces.
+2025-06-23T10:40:29.095+03:00  INFO 14480 --- [my-spring-app] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-06-23T10:40:29.356+03:00  INFO 14480 --- [my-spring-app] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@3504fbfe
+2025-06-23T10:40:29.358+03:00  INFO 14480 --- [my-spring-app] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-06-23T10:40:29.434+03:00  INFO 14480 --- [my-spring-app] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-23T10:40:29.485+03:00  INFO 14480 --- [my-spring-app] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-06-23T10:40:29.581+03:00  INFO 14480 --- [my-spring-app] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-23T10:40:29.614+03:00  WARN 14480 --- [my-spring-app] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-06-23T10:40:30.344+03:00  INFO 14480 --- [my-spring-app] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-23T10:40:30.389+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : alter table if exists employee alter column id set data type bigint
+Hibernate: alter table if exists employee alter column id set data type bigint
+2025-06-23T10:40:30.399+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : alter table if exists employee alter column salary set data type float(53)
+Hibernate: alter table if exists employee alter column salary set data type float(53)
+2025-06-23T10:40:30.404+03:00  INFO 14480 --- [my-spring-app] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-23T10:40:30.703+03:00  WARN 14480 --- [my-spring-app] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-23T10:40:30.739+03:00  WARN 14480 --- [my-spring-app] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 6fbd5f7c-c0c1-4763-a7b2-2e7fb99166d4
+Using generated security password: a3de4b09-bcd5-4d96-a203-75b1331be8dc
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2025-06-23T10:39:50.887+03:00  INFO 14480 --- [my-spring-app] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@182934f2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6c92af74, org.springframework.security.web.context.SecurityContextHolderFilter@16209621, org.springframework.security.web.header.HeaderWriterFilter@39c821c6, org.springframework.web.filter.CorsFilter@4aedac7f, org.springframework.security.web.authentication.logout.LogoutFilter@1069baea, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7ff167c4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4c32d208, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@61df07d0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7f8bc54e, org.springframework.security.web.access.ExceptionTranslationFilter@76145ef9, org.springframework.security.web.access.intercept.AuthorizationFilter@4c12e25d]
-2025-06-23T10:39:52.119+03:00  INFO 14480 --- [my-spring-app] [           main] com.example.AppTest                      : Started AppTest in 14.732 seconds (process running for 17.268)
+2025-06-23T10:40:31.170+03:00  INFO 14480 --- [my-spring-app] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@57f60b5e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@21e860cd, org.springframework.security.web.context.SecurityContextHolderFilter@3469a432, org.springframework.security.web.header.HeaderWriterFilter@2b8df4bc, org.springframework.web.filter.CorsFilter@7e8e2fc7, org.springframework.security.web.authentication.logout.LogoutFilter@43df5cba, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6e75a0a6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@42994d28, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7e821499, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3dbdc020, org.springframework.security.web.access.ExceptionTranslationFilter@2293d694, org.springframework.security.web.access.intercept.AuthorizationFilter@25ef4ad5]
+2025-06-23T10:40:31.482+03:00  INFO 14480 --- [my-spring-app] [           main] c.e.s.EmployeeServiceIntegrationTest     : Started EmployeeServiceIntegrationTest in 4.934 seconds (process running for 56.631)
+2025-06-23T10:40:31.738+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0
+Hibernate: select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0
+2025-06-23T10:40:31.833+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : insert into employee (date_of_birth,department,first_name,join_date,last_name,salary) values (?,?,?,?,?,?)
+Hibernate: insert into employee (date_of_birth,department,first_name,join_date,last_name,salary) values (?,?,?,?,?,?)
+2025-06-23T10:40:32.028+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : select count(*) from employee e1_0 where e1_0.id=?
+Hibernate: select count(*) from employee e1_0 where e1_0.id=?
+2025-06-23T10:40:32.057+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0 where e1_0.id=?
+2025-06-23T10:40:32.090+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : delete from employee where id=?
+Hibernate: delete from employee where id=?
+2025-06-23T10:40:32.098+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0 where e1_0.id=?
 ]]></system-out>
-    <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\tefa\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.13\byte-buddy-agent-1.14.13.jar)
-WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
-WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
-WARNING: Dynamic loading of agents will be disallowed by default in a future release
-]]></system-err>
+  </testcase>
+  <testcase name="testCreateAndGetEmployee" classname="com.example.service.EmployeeServiceIntegrationTest" time="0.206">
+    <system-out><![CDATA[2025-06-23T10:40:32.337+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0
+Hibernate: select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0
+2025-06-23T10:40:32.454+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : insert into employee (date_of_birth,department,first_name,join_date,last_name,salary) values (?,?,?,?,?,?)
+Hibernate: insert into employee (date_of_birth,department,first_name,join_date,last_name,salary) values (?,?,?,?,?,?)
+2025-06-23T10:40:32.474+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0 where e1_0.id=?
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateEmployee" classname="com.example.service.EmployeeServiceIntegrationTest" time="0.173">
+    <system-out><![CDATA[2025-06-23T10:40:32.538+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0
+Hibernate: select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0
+2025-06-23T10:40:32.611+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : delete from employee where id=?
+Hibernate: delete from employee where id=?
+2025-06-23T10:40:32.630+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : insert into employee (date_of_birth,department,first_name,join_date,last_name,salary) values (?,?,?,?,?,?)
+Hibernate: insert into employee (date_of_birth,department,first_name,join_date,last_name,salary) values (?,?,?,?,?,?)
+2025-06-23T10:40:32.645+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0 where e1_0.id=?
+2025-06-23T10:40:32.663+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0 where e1_0.id=?
+Hibernate: select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0 where e1_0.id=?
+2025-06-23T10:40:32.686+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : update employee set date_of_birth=?,department=?,first_name=?,join_date=?,last_name=?,salary=? where id=?
+Hibernate: update employee set date_of_birth=?,department=?,first_name=?,join_date=?,last_name=?,salary=? where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAllEmployees" classname="com.example.service.EmployeeServiceIntegrationTest" time="0.08">
+    <system-out><![CDATA[2025-06-23T10:40:32.714+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0
+Hibernate: select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0
+2025-06-23T10:40:32.721+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : delete from employee where id=?
+Hibernate: delete from employee where id=?
+2025-06-23T10:40:32.728+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : insert into employee (date_of_birth,department,first_name,join_date,last_name,salary) values (?,?,?,?,?,?)
+Hibernate: insert into employee (date_of_birth,department,first_name,join_date,last_name,salary) values (?,?,?,?,?,?)
+2025-06-23T10:40:32.737+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : insert into employee (date_of_birth,department,first_name,join_date,last_name,salary) values (?,?,?,?,?,?)
+Hibernate: insert into employee (date_of_birth,department,first_name,join_date,last_name,salary) values (?,?,?,?,?,?)
+2025-06-23T10:40:32.749+03:00 DEBUG 14480 --- [my-spring-app] [           main] org.hibernate.SQL                        : select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0
+Hibernate: select e1_0.id,e1_0.date_of_birth,e1_0.department,e1_0.first_name,e1_0.join_date,e1_0.last_name,e1_0.salary from employee e1_0
+]]></system-out>
   </testcase>
 </testsuite>
