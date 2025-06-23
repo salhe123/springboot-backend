@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dto.EmployeeRequest;
 import com.example.dto.EmployeeResponse;
+import com.example.model.Employee;
 import com.example.repository.EmployeeRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,8 +16,10 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @Testcontainers
 @SpringBootTest
@@ -61,7 +64,7 @@ public class EmployeeServiceIntegrationTest {
 
         EmployeeResponse response = employeeService.getEmployeeById(id);
 
-        assertThat(response.getFirstName()).isEqualTo("John"); // FIXED
+        assertThat(response.getFirstName()).isEqualTo("John");
         assertThat(response.getLastName()).isEqualTo("Doe");
         assertThat(response.getDepartment()).isEqualTo("Engineering");
     }
@@ -134,6 +137,13 @@ public class EmployeeServiceIntegrationTest {
 
         employeeService.deleteEmployee(id);
 
-        assertThat(employeeRepository.findById(id)).isNotPresent();
+        // Should not be returned by service
+        assertThrows(RuntimeException.class, () -> employeeService.getEmployeeById(id));
+        assertThat(employeeService.getAllEmployees()).extracting(EmployeeResponse::getId).doesNotContain(id);
+
+        // Still present in DB, but marked as deleted
+        Optional<Employee> dbEmployee = employeeRepository.findById(id);
+        assertThat(dbEmployee).isPresent();
+        assertThat(dbEmployee.get().getDeleted()).isTrue();
     }
 }

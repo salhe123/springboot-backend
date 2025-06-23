@@ -30,4 +30,7 @@ public class Employee {
 
     @Column(name = "department")
     private String department;
+
+    @Column(name = "deleted", nullable = false)
+    private Boolean deleted = false; 
 }
